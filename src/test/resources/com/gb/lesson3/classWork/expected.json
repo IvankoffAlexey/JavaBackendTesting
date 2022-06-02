@@ -1,0 +1,5 @@
+{
+  "createdAt": "${json-unit.ignore}", // пропуск поля в тесте
+  "author": "Mike",
+  "text": "text"
+}

@@ -1,4 +1,4 @@
-package com.gb.lesson4.homeWork.spoonaccular.mealPlanTest.shoppingListTest;
+package com.gb.lesson4.homeWork.spoonaccular.shoppingListTest;
 
 import com.gb.lesson4.homeWork.spoonaccular.AbstractSpoonaccularTest;
 import io.restassured.RestAssured;

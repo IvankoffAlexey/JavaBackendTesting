@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MiniMarketProductsResult {
-    private Integer id;
+    private Long id;
     private String title;
     private Integer price;
     private String categoryTitle;
 }
+

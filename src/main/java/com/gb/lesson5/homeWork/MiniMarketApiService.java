@@ -17,15 +17,15 @@ public class MiniMarketApiService {
 private final MiniMarketApi api;
     public MiniMarketApiService() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(System.out::println);
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .build();
 
         api = new Retrofit.Builder()
                 .baseUrl("https://minimarket1.herokuapp.com/market/api/v1/")
-                .client(client)
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MiniMarketApi.class);
@@ -45,25 +45,20 @@ private final MiniMarketApi api;
         return call.execute();
     }
 
-    public Response<MiniMarketProductsResult> modifyProducts(MiniMarketProductsResult body) throws IOException {
-        Call <MiniMarketProductsResult> call = api.modifyProducts(body);
+    public Response<MiniMarketProductsResult> updateProducts(MiniMarketProductsResult body) throws IOException {
+        Call <MiniMarketProductsResult> call = api.updateProducts(body);
         return call.execute();
     }
 
-//    public MiniMarketProductsResult getProductsId(Integer id) {
-//        Call<MiniMarketProductsResult> call = api.getProductsId(id);
-//        return executeCall(api.getProductsId(call));
-//    }
+    public MiniMarketProductsResult getProductsId(Long id) {
+        Call<MiniMarketProductsResult> call = api.getProductsId(id);
+        return executeCall(call);
+    }
 
-//    public Response<Void> removeProductsId(Integer id) throws IOException {
-//        Call<Void> call = api. removeProductsId(id);
-//        return call.execute();
-//    }
-
-//    public MiniMarketCategoryResult getProductsIdAfterDelete(Integer id) {
-//        return executeCall(api.getProductsIdAfterDelete(id));
-//    }
-
+    public Response<Void> deleteProductsId(Long id) throws IOException {
+        Call<Void> call = api. deleteProductsId(id);
+        return call.execute();
+    }
 }
 
 

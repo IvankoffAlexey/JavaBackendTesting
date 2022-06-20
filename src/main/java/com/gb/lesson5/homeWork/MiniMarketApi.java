@@ -13,17 +13,18 @@ public interface MiniMarketApi {
     @GET("products/")
     Call<List<MiniMarketProductsResult>> getProducts();
 
+    @GET("products/{id}")
+    Call<MiniMarketProductsResult> getProductsId(@Path("id") Long id);
+
     @POST("products/")
     Call<MiniMarketProductsResult> createProducts(@Body MiniMarketProductsResult body);
 
     @PUT("products/")
-    Call<MiniMarketProductsResult> modifyProducts(@Body MiniMarketProductsResult body);
+    Call<MiniMarketProductsResult> updateProducts(@Body MiniMarketProductsResult body);
 
-//    @GET("products/{id}")
-//    Call<MiniMarketProductsResult> getProductsId(@Path("id") Integer id);
 
-//    @DELETE("products/{id}")
-//    Call<Void> removeProductsId(@Path("id") Integer id);
+    @DELETE("products/{id}")
+    Call<Void> deleteProductsId(@Path("id") Long id);
 
 
 //    @GET("products/{id}")

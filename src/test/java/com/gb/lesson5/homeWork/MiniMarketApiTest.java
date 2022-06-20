@@ -24,18 +24,16 @@ public class MiniMarketApiTest extends AbstractMiniMarketApiTest {
         MiniMarketCategoryResult category = service.getCategory(2);
 //         Перед проведением сравнения необходимо обновить .json файл
 //        assertJson(getResource("category.json"), category);
+        System.out.println("Get categories");
     }
-
     @Test
     @Order(2)
     void testGetProducts()  {
         List<MiniMarketProductsResult> products = service.getProducts();
-//                 Перед проведением тестов на сравнения необходимо обновить .json файл
+//          Перед проведением теста на сравнения необходимо обновить .json файл
 //        assertJson(getResource("products.json"), products);
-
+        System.out.println("Get products");
     }
-
-
     @Test
     @Order(3)
     void testCreateProducts() throws IOException {
@@ -46,20 +44,29 @@ public class MiniMarketApiTest extends AbstractMiniMarketApiTest {
         product.setCategoryTitle("Food");
         Response<MiniMarketProductsResult> response = service.createProducts(product);
         MiniMarketProductsResult created = response.body();
-
-        Assertions.assertEquals(201, response.code());
         Assertions.assertNotNull(created);
+        Assertions.assertEquals(product.getTitle(), created.getTitle());
+        Assertions.assertEquals(product.getPrice(), created.getPrice());
+        Assertions.assertEquals(product.getCategoryTitle(), created.getCategoryTitle());
+        Assertions.assertEquals(201, response.code());
         id = created.getId();
-        System.out.println(id);
+        System.out.println("Create product ID : " + id);
     }
-
     @Test
     @Order(4)
     void testGetProductsId() throws IOException {
+        MiniMarketProductsResult exProduct = new MiniMarketProductsResult();
+        exProduct.setId(id);
+        exProduct.setTitle("Bred");
+        exProduct.setPrice(100);
+        exProduct.setCategoryTitle("Food");
         MiniMarketProductsResult product = service.getProductsId(id);
-        System.out.println(id + " " + product.getTitle() + " " + product.getPrice());
+        Assertions.assertEquals(exProduct.getTitle(), product.getTitle());
+        Assertions.assertEquals(exProduct.getPrice(), product.getPrice());
+        Assertions.assertEquals(exProduct.getCategoryTitle(), product.getCategoryTitle());
+        Assertions.assertEquals(exProduct.getId(), product.getId());
+        System.out.println("Get product after created by ID : " + id + " " + product.getTitle() + " " + product.getPrice());
     }
-
     @Test
     @Order(5)
     void testUpdateProducts() throws IOException {
@@ -70,33 +77,32 @@ public class MiniMarketApiTest extends AbstractMiniMarketApiTest {
         product.setCategoryTitle("Food");
         Response<MiniMarketProductsResult> response = service.updateProducts(product);
         MiniMarketProductsResult update = response.body();
-
-        Assertions.assertEquals(200, response.code());
         Assertions.assertNotNull(update);
-        System.out.println("Id :" + id + " - Изменен!");
+        Assertions.assertEquals(product.getTitle(), update.getTitle());
+        Assertions.assertEquals(product.getPrice(), update.getPrice());
+        Assertions.assertEquals(product.getCategoryTitle(), update.getCategoryTitle());
+        Assertions.assertEquals(200, response.code());
+        System.out.println("Update product by ID : " + id);
 
     }
-
     @Test
     @Order(6)
     void testGetProductsIdAfterUpdate() throws IOException {
         MiniMarketProductsResult product = service.getProductsId(id);
-        System.out.println(id + " " + product.getTitle() + " " + product.getPrice());
+        System.out.println("Get product by Id after update ID : " + id + " " + product.getTitle() + " " + product.getPrice());
     }
     @Test
     @Order(7)
     void testDeleteProducts() throws IOException {
         Response<Void> remove = service.deleteProductsId(id);
         Assertions.assertEquals(200, remove.code());
-        System.out.println("ID" + " : " + id + " - " + "Удален");
-//               Перед проведением тестов на сравнения необходимо обновить .json файл
-//        assertJson(getResource("productId.json"), delete);
-    }
+        System.out.println("Delete product by ID : " + id);
 
+    }
     @Test
     @Order(8)
     void testGetProductsIdAfterDelete() throws IOException {
         MiniMarketProductsResult product = service.getProductsId(id);
-        System.out.println("Id : " + id + " - " + " Не найден " );
+        System.out.println("Get product by Id after delete ID : " + id);
     }
 }

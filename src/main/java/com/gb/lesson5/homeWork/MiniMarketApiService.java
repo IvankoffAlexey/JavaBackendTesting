@@ -17,7 +17,7 @@ public class MiniMarketApiService {
 private final MiniMarketApi api;
     public MiniMarketApiService() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(System.out::println);
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)

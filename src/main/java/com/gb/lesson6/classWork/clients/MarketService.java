@@ -6,6 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.gb.lesson5.classWork.clients.RetrofitCallExecutor.executeCall;
+
 import java.util.List;
 
 public class MarketService {
@@ -41,15 +43,5 @@ public class MarketService {
     public Product createProduct(Product product) {
 
      return executeCall(api.postProduct(product));
-    }
-    
-    public <T> T executeCall(Call<T> call) {
-        try {
-            Response<T> response = call.execute();
-            return response.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

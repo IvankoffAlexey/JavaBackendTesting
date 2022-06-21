@@ -8,8 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
 
-import static com.gb.lesson5.classWork.clients.RetrofitCallExecutor.executeCall;
-
 public class MarketService {
 
     private final MarketApi api;
@@ -43,5 +41,15 @@ public class MarketService {
     public Product createProduct(Product product) {
 
      return executeCall(api.postProduct(product));
+    }
+    
+    public <T> T executeCall(Call<T> call) {
+        try {
+            Response<T> response = call.execute();
+            return response.body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

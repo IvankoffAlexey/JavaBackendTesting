@@ -56,7 +56,7 @@ private final MiniMarketApi api;
     }
 
     public Response<Void> deleteProductsId(Long id) throws IOException {
-        Call<Void> call = api. deleteProductsId(id);
+        Call<Void> call = api.deleteProductsId(id);
         return call.execute();
     }
 }

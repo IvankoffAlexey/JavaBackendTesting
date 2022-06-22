@@ -13,6 +13,8 @@ import java.util.List;
 
 import static com.gb.lesson5.classWork.clients.RetrofitCallExecutor.executeCall;
 
+import java.util.List;
+
 public class MarketService {
 
     private final MarketApi api;

@@ -39,7 +39,7 @@ public class MarketTest {
 
     @Test
     @Order(1)
-    @DisplayName("Создание и проверка продукта в БД")
+    @DisplayName("CreateAndCheckProductInDb")
     void testCreateAndCheckProductInDb() throws Exception {
         Product product = new Product();
         product.setTitle("Bred");
@@ -62,7 +62,7 @@ public class MarketTest {
 
     @Test
     @Order(2)
-    @DisplayName("Изменение и проверка продукта в БД")
+    @DisplayName("UpdateAndCheckProductInDb")
     void testUpdateAndCheckProductInDb() throws IOException {
         Product product = new Product();
         product.setId(id);
@@ -85,7 +85,7 @@ public class MarketTest {
 
     @Test
     @Order(3)
-    @DisplayName("Удаление и проверка продукта в БД")
+    @DisplayName("DeleteAndCheckProductInDb")
     void testDeleteAndCheckProductInDb() throws IOException {
         Response<Void> deleteProduct = service.deleteProduct(id);
 
@@ -95,7 +95,7 @@ public class MarketTest {
 
     @Test
     @Order(4)
-    @DisplayName("Запрос продукта по ID после его удаления")
+    @DisplayName("GetProductByIdAndCheckAfterDeletedProductFromDb")
     void testGetProductByIdAndCheckAfterDeletedProductFromDb() throws IOException {
         Response<Product> response = service.getProductById(id);
         Assertions.assertEquals(404, response.code());

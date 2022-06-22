@@ -1,7 +1,6 @@
 package com.gb.lesson6.classWork.clients;
 
 import com.gb.lesson6.classWork.market.models.Product;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -13,8 +12,14 @@ public interface MarketApi {
     Call<List<Product>> getProducts();
 
     @GET("products/{id}")
-    Call<Product> getProduct(@Path("id") Long id);
+    Call<Product> getProductById(@Path("id") Long id);
 
     @POST("products")
-    Call<Product> postProduct(@Body Product product);
+    Call<Product> createProduct(@Body Product product);
+
+    @PUT("products")
+    Call<Product> updateProduct(@Body Product product);
+
+    @DELETE("products/{id}")
+    Call<Void> deleteProduct(@Path("id") Long id);
 }

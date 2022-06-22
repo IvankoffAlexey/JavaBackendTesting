@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
 public class MealPlanTest {
-
+    private static String id;
     private static final String API_KEY = "df76289e26bd474e8d8a3c52bc2baf74";
     private static final String hash = "5475f78358abb41d4f19c9c7fec7c3562968a38f";
     private static final String username = "qatesta2";
@@ -24,10 +24,12 @@ public class MealPlanTest {
 
 
     @BeforeAll
+    @Disabled
     static void beforeAll() {
         RestAssured.baseURI = "https://api.spoonacular.com/mealplanner/";
     }
     @BeforeEach
+    @Disabled
     void AddCoffeeToMealPlan() {
         Response response = given()
                 .contentType(ContentType.JSON)
@@ -58,6 +60,7 @@ public class MealPlanTest {
 
 
     @Test
+    @Disabled
     @DisplayName("Generate Meal Plan Test")
     void generateMealPlanTest() throws IOException {
         ValidatableResponse generate = given()
@@ -73,9 +76,10 @@ public class MealPlanTest {
                 .statusCode(200);
 
     }
-    static String id;
+
 
     @Test
+    @Disabled
     @DisplayName("Add Coffee To Meal Plan Test")
     void addCoffeeToMealPlanTest() {
             id = given()
@@ -110,6 +114,7 @@ public class MealPlanTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Get Meal Plan Test")
     void getMealPlanTest() throws IOException {
 
@@ -140,6 +145,7 @@ public class MealPlanTest {
     }
 
     @Test()
+    @Disabled
     @DisplayName("Remove Coffee From Meal Plan")
     void removeCoffeeFromMealPlanTest() {
         given()
@@ -155,6 +161,7 @@ public class MealPlanTest {
     }
 
     @AfterEach
+    @Disabled
     void tearDown() {
         given()
                 .contentType(ContentType.JSON)

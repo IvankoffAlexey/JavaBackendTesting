@@ -7,7 +7,7 @@ import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
-public class MiniMarketApiTest extends AbstractMiniMarketApiTest {
+public class MiniMarketApiTest {
 
     private static MiniMarketApiService service;
 

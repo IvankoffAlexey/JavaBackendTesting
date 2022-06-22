@@ -17,6 +17,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
     private static String id;
 
     @BeforeEach
+    @Disabled
     void AddCoffeeToMealPlan() {
 
         Response response = given()
@@ -47,6 +48,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
 
 
     @Test
+    @Disabled
     @DisplayName("Generate Meal Plan Test")
     void generateMealPlanTest() throws IOException {
         ValidatableResponse generate = given()
@@ -64,6 +66,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
 
 
     @Test
+    @Disabled
     @DisplayName("Add Coffee To Meal Plan Test")
     void addCoffeeToMealPlanTest() throws Exception {
         String requestBody = getResource("addCoffee.json");
@@ -83,6 +86,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Get Meal Plan Test")
     void getMealPlanTest() throws Exception {
 
@@ -107,6 +111,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
 
 
     @Test()
+    @Disabled
     @DisplayName("Remove Coffee From Meal Plan")
     void removeCoffeeFromMealPlanTest() {
         given()
@@ -121,6 +126,7 @@ public class MealPlanTest extends MealPlanSpecificationTest {
     }
 
     @AfterEach
+    @Disabled
     void tearDown() {
         given()
                 .contentType(ContentType.JSON)

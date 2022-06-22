@@ -1,6 +1,7 @@
 package com.gb.lesson4.classWork.spoonaccular;
 
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,6 +10,7 @@ import static org.hamcrest.Matchers.is;
 
 public class ImageClassifyTest extends SpoonaccularTest {
     @Test
+    @Disabled
     void testBurgerClassification() {
         given()
                 .multiPart(getFile("burger.jpg"))

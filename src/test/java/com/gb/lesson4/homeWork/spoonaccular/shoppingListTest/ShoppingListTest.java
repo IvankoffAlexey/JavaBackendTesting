@@ -1,6 +1,7 @@
 package com.gb.lesson4.homeWork.spoonaccular.shoppingListTest;
 
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
@@ -17,6 +18,7 @@ public class ShoppingListTest extends ShoppingListSpecificationTest {
     private static String id;
 
     @Test
+    @Disabled
     @DisplayName("Add Shopping List")
     void addShoppingList() throws Exception {
         String requestBody = getResource("addShoppingList.json");
@@ -36,6 +38,7 @@ public class ShoppingListTest extends ShoppingListSpecificationTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Get Shopping List Test")
     void getShoppingListTest() throws Exception {
 
@@ -51,6 +54,7 @@ public class ShoppingListTest extends ShoppingListSpecificationTest {
     }
 
     @Test()
+    @Disabled
     @DisplayName("Remove Coffee From Meal Plan")
     void removeCoffeeFromMealPlanTest() {
         given()

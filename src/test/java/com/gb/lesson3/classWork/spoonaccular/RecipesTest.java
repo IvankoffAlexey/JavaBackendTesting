@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import net.javacrumbs.jsonunit.JsonAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -21,11 +22,13 @@ public class RecipesTest {
     private static final String API_KEY = "df76289e26bd474e8d8a3c52bc2baf74";
 
     @BeforeAll
+    @Disabled
     static void beforeAll() {
         RestAssured.baseURI = "https://api.spoonacular.com/recipes/";
     }
 
     @Test
+    @Disabled
     void testAutocompleteSearch() throws IOException {
 
         String actually = given()
@@ -60,6 +63,7 @@ public class RecipesTest {
 
 
     @Test
+    @Disabled
     void testTasteRecipeById() {
         given()
                 .log()
@@ -81,6 +85,7 @@ public class RecipesTest {
     }
 
     @Test
+    @Disabled
     void testEquipmentById() {
 
         EquipmentItem target = new EquipmentItem("pie-pan.png", "pie form");

@@ -1,12 +1,14 @@
 package com.gb.lesson4.homeWork.spoonaccular.recipesComplexSearchTest;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 public class RecipesComplexSearchTest extends RecipesSpecificationTest {
 
         @Test
+        @Disabled
         void testNutritionById() {
             given()
                     .pathParams("id", 1000000)
@@ -22,6 +24,7 @@ public class RecipesComplexSearchTest extends RecipesSpecificationTest {
         }
 
     @Test
+    @Disabled
     void IngredientsByIdTest() {
 
         IngredientsById target = new IngredientsById("shredded-cheese-white.jpg", "shredded monterey jack cheese");
@@ -58,6 +61,7 @@ public class RecipesComplexSearchTest extends RecipesSpecificationTest {
     }
 
     @Test
+    @Disabled
         void testConvertAmounts() {
         String sourceUnit = "cups";
         String targetUnit = "grams";
@@ -83,6 +87,7 @@ public class RecipesComplexSearchTest extends RecipesSpecificationTest {
 
 
     @Test
+    @Disabled
         void summaryItemTest() {
            SummaryItem response = given()
                     .pathParams("id", 1231)
@@ -101,6 +106,7 @@ public class RecipesComplexSearchTest extends RecipesSpecificationTest {
         }
 
         @Test
+        @Disabled
         void analyzeRecipeOfSearchQueryTest() {
             Dish targetDish = new Dish("https://spoonacular.com/cdn/ingredients_100x100/rotisserie-chicken.png", "rotisserie-chicken");
 

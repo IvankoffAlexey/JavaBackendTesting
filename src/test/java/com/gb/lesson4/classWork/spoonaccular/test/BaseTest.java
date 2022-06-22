@@ -8,6 +8,6 @@ import java.io.IOException;
 public class BaseTest extends AbstractTest {
     @Test
     void test() throws IOException {
-        System.out.println(getResource("text.txt"));
+        System.out.println(getResource("/text.txt"));
     }
 }

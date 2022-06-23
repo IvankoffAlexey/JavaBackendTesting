@@ -4,9 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.gb</groupId>
     <artifactId>JavaBackendTesting</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -18,17 +20,30 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.xml</include>
+                    <include>**/*</include>
                 </includes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.xml</include>
+                    <include>**/*</include>
                 </includes>
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.11.2</version>
+                <configuration>
+<!--                    <resultsDirectory>target/allure-results</resultsDirectory>-->
+<!--                    <reportDirectory>target/allure-reports</reportDirectory>-->
+<!--                    <properties>-->
+<!--                        <allure.results.directory>target/allure-results</allure.results.directory>-->
+<!--                    </properties>-->
+                    <reportVersion>2.17.3</reportVersion>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -36,23 +51,12 @@
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
-<!--                        <id>Generate MyBatis Artifacts</id>-->
+                        <id>Generate MyBatis Artifacts</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.11.2</version>
-                <configuration>
-                    <properties>
-                        <allure.results.directory>target/allure-results</allure.results.directory>
-                    </properties>
-                    <reportVersion>2.17.3</reportVersion>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -71,6 +75,22 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit-platform</artifactId>
+            <version>2.18.1</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -84,19 +104,13 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-params</artifactId>-->
+<!--            <version>5.8.2</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -170,6 +184,11 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--            </plugin>-->
         </plugins>
     </reporting>
 </project>
